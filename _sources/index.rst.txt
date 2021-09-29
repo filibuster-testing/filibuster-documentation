@@ -74,3 +74,9 @@ Depending on your role, we recommend different sections of our documentation.
    instrumentation-server-new-test-execution
 
 .. image:: /_static/images/isr-logo.png
+  :width: 100
+  :alt: Alternative text
+
+.. image:: /_static/images/cmu-seal-r.png
+  :width: 100
+  :alt: Alternative text

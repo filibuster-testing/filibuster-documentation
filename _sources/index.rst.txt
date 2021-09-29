@@ -73,10 +73,16 @@ Depending on your role, we recommend different sections of our documentation.
    instrumentation-server-update
    instrumentation-server-new-test-execution
 
-.. image:: /_static/images/isr-logo.png
+Credits
+-------
+
+Filibuster was developed by `Christopher Meiklejohn <http://www.christophermeiklejohn>`_, Andrea Estrada, Yiwen Song, `Heather Miller <https://heather.miller.am/>`_, and `Rohan Padhye <https://rohan.padhye.org/>`_ in the
+`Composable Systems Lab <https://www.composable-systems.com/>`_ in the `Institute for Software Research <https://www.isri.cmu.edu/>`_ at `Carnegie Mellon University <https://www.cmu.edu/>`_.
+
+.. image:: /_static/images/cmu-seal-r.png
   :width: 100
   :alt: Alternative text
 
-.. image:: /_static/images/cmu-seal-r.png
+.. image:: /_static/images/isr-logo.png
   :width: 100
   :alt: Alternative text

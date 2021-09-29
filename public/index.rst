@@ -73,3 +73,4 @@ Depending on your role, we recommend different sections of our documentation.
    instrumentation-server-update
    instrumentation-server-new-test-execution
 
+.. image:: /_static/images/isr-logo.png

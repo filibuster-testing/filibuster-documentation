@@ -51,10 +51,6 @@ Depending on your role, we recommend different sections of our documentation.
    tutorial
    tools
 
-.. raw:: html
-
-   <hr>
-
 .. toctree::
    :maxdepth: 2
    :caption: Filibuster Corpus
@@ -63,10 +59,6 @@ Depending on your role, we recommend different sections of our documentation.
    cinema-examples
    industry-examples
 
-.. raw:: html
-
-   <hr>
-
 .. toctree::
    :maxdepth: 2
    :caption: Extending Filibuster
@@ -74,10 +66,6 @@ Depending on your role, we recommend different sections of our documentation.
    instrumentation-overview
    instrumentation-flask
    instrumentation-requests
-
-.. raw:: html
-
-   <hr>
 
 .. toctree::
    :maxdepth: 2
@@ -88,10 +76,6 @@ Depending on your role, we recommend different sections of our documentation.
    instrumentation-grpc-server
    instrumentation-grpc-client-fi
    instrumentation-grpc-client-analysis
-
-.. raw:: html
-
-   <hr>
 
 .. toctree::
    :maxdepth: 2

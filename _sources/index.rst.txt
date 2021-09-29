@@ -31,6 +31,10 @@ Filibuster was developed by `Christopher Meiklejohn <http://www.christophermeikl
   :width: 150
   :alt: Alternative text
 
+.. raw:: html
+
+   <hr>
+
 Table of Contents
 -----------------
 

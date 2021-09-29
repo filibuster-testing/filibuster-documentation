@@ -21,6 +21,16 @@ Roadmap
 
 Filibuster currently supports Python services implemented in Flask that communicate using either gRPC or HTTP.  Java support for `Armeria <https://armeria.dev/>`_ web services that communicate using gRPC or HTTP has been completed and is currently being tested.
 
+Credits
+-------
+
+Filibuster was developed by `Christopher Meiklejohn <http://www.christophermeiklejohn>`_, Andrea Estrada, Yiwen Song, `Heather Miller <https://heather.miller.am/>`_, and `Rohan Padhye <https://rohan.padhye.org/>`_ in the
+`Composable Systems Lab <https://www.composable-systems.com/>`_ in the `Institute for Software Research <https://www.isri.cmu.edu/>`_ at `Carnegie Mellon University <https://www.cmu.edu/>`_.
+
+.. image:: /_static/images/isr-logo.png
+  :width: 150
+  :alt: Alternative text
+
 Table of Contents
 -----------------
 
@@ -72,17 +82,3 @@ Depending on your role, we recommend different sections of our documentation.
    instrumentation-server-create
    instrumentation-server-update
    instrumentation-server-new-test-execution
-
-Credits
--------
-
-Filibuster was developed by `Christopher Meiklejohn <http://www.christophermeiklejohn>`_, Andrea Estrada, Yiwen Song, `Heather Miller <https://heather.miller.am/>`_, and `Rohan Padhye <https://rohan.padhye.org/>`_ in the
-`Composable Systems Lab <https://www.composable-systems.com/>`_ in the `Institute for Software Research <https://www.isri.cmu.edu/>`_ at `Carnegie Mellon University <https://www.cmu.edu/>`_.
-
-.. image:: /_static/images/cmu-seal-r.png
-  :width: 100
-  :alt: Alternative text
-
-.. image:: /_static/images/isr-logo.png
-  :width: 100
-  :alt: Alternative text

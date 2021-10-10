@@ -25,6 +25,7 @@ Perform resilience testing with Filibuster.
       --counterexample-file TEXT  Counterexample file to run.
       --only-initial-execution    Only run the initial, fault-free execution of
                                   the test.
+      --disable-dynamic-reduction Disable dynamic reduction.
       --help                      Show this message and exit.
 
 .. list-table:: Options
@@ -53,6 +54,10 @@ Perform resilience testing with Filibuster.
      - Optional
      - Flag
      - Only run the initial, fault-free execution of the functional test.
+   * - ``disable-dynamic-reduction``
+     - Optional
+     - Flag
+     - Disable dynamic reduction.
 
 Filibuster Analysis
 -------------------

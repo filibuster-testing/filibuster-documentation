@@ -10,7 +10,7 @@
 Overview
 --------
 
-Filibuster is the prototype implementation of `Service-level Fault Injection Testing <https://filibuster.cloud/filibuster-socc-2021.pdf>`_ (`ACM SoCC '21 <https://acmsocc.org/2021/accepted-papers.html>`_) written in Python.
+Filibuster is the prototype implementation of `Service-level Fault Injection Testing <http://christophermeiklejohn.com/publications/filibuster-socc-2021.pdf>`_ (`ACM SoCC '21 <https://acmsocc.org/2021/accepted-papers.html>`_) written in Python.
 
 Service-level Fault Injection Testing is a technique for identifying resilience issues in microservice-based applications in development, before code ships to production.  Filibuster has been designed to be easy to use, lightweight, and able to be integrated into a continuous integration environment, like GitHub Actions or Amazon's CodeBuild CI/CD environment.
 

@@ -16,6 +16,10 @@ Service-level Fault Injection Testing is a technique for identifying resilience 
 
 Filibuster open-source and available on `GitHub <https://github.com/filibuster-testing>`_.
 
+.. raw:: html
+   
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/pyYh-vNspAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Roadmap
 ^^^^^^^
 

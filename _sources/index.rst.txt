@@ -14,11 +14,11 @@ Filibuster is the prototype implementation of `Service-level Fault Injection Tes
 
 Service-level Fault Injection Testing is a technique for identifying resilience issues in microservice-based applications in development, before code ships to production.  Filibuster has been designed to be easy to use, lightweight, and able to be integrated into a continuous integration environment, like GitHub Actions or Amazon's CodeBuild CI/CD environment.
 
-Filibuster open-source and available on `GitHub <https://github.com/filibuster-testing>`_.
-
 .. raw:: html
    
    <iframe width="560" height="315" src="https://www.youtube.com/embed/pyYh-vNspAI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Filibuster open-source and available on `GitHub <https://github.com/filibuster-testing>`_.
 
 Roadmap
 ^^^^^^^

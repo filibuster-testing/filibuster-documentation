@@ -60,6 +60,7 @@ Depending on your role, we recommend different sections of our documentation.
 
    tutorial
    tools
+   timeouts
 
 .. raw:: html
 
@@ -72,7 +73,6 @@ Depending on your role, we recommend different sections of our documentation.
    research-1
    research-2
    research-3
-   research-4
 
 .. raw:: html
 

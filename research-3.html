@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dynamic Reduction &mdash; filibuster  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Running" href="running.html" />
+    <link rel="prev" title="What is SFIT?" href="research-2.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> filibuster
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Using Filibuster</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research Blog</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="research-1.html">Researching Resilience: Lack of Corpus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="research-2.html">What is SFIT?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dynamic Reduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-ride-sharing">Example: Ride Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#applying-filibuster">Applying Filibuster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#failure-permutations">Failure Permutations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#first-principle-tolerance-to-failure-of-single-service">First Principle: Tolerance to Failure of Single Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#second-principle-permutations-of-service-s-direct-dependencies">Second Principle: Permutations of Service’s Direct Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Dynamic Reduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#audible-vs-netflix">Audible vs. Netflix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Filibuster Corpus</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cinema-examples.html">Cinema Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="industry-examples.html">Industry Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Filibuster</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-overview.html">Instrumentation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-flask.html">Instrumentation Example: Flask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-requests.html">Instrumentation Example: Requests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Writing Instrumentation: GRPC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-overview.html">Instrumenting GRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-client.html">Instrumenting Remote Service Calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-server.html">Instrumenting Services To Receive Calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-client-fi.html">Enabling Fault-Injection in the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-client-analysis.html">Static Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Filibuster Server API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-formats.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-server-create.html">HTTP API: Create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-server-update.html">HTTP API: Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-server-new-test-execution.html">HTTP API: New Test Execution</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">filibuster</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Dynamic Reduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/research-3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dynamic-reduction">
+<h1>Dynamic Reduction<a class="headerlink" href="#dynamic-reduction" title="Permalink to this headline"></a></h1>
+<p>In this post, we’re going to look at how Filibuster can take advantage of
+certain properties of microservice architectures to reduce testing overhead: key
+to running resilience tests in development or CI before code ships to
+production.</p>
+<section id="example-ride-sharing">
+<h2>Example: Ride Sharing<a class="headerlink" href="#example-ride-sharing" title="Permalink to this headline"></a></h2>
+<p>Let’s consider an example microservice application that might back a ride sharing service.</p>
+<img alt="_images/filibuster-dr-1.png" src="_images/filibuster-dr-1.png" />
+<p>In this example, a few things are happening:</p>
+<ul class="simple">
+<li><p>First, the API gateway is contacted by the mobile app to display to a driver a page that estimates how much money they might make driving tonight.</p></li>
+<li><p>The API gateway contacts the <em>payments</em> service, which in turn pre-authorizes a payment using a 3rd party payment processor that has 99.9% uptime.</p></li>
+<li><p>After that, a <em>workload</em> service is contacted that returns the estimated workload, perhaps using a ML model.</p></li>
+<li><p>Finally, a <em>assets</em> service is contacted to retrieve required stylesheets and other image assets needed to display the page.</p></li>
+</ul>
+<p>This application has some failure handling built in already:</p>
+<ol class="arabic simple">
+<li><p>If the <em>payments</em> service fails for any reason – or if it’s dependency is unavailable – the error is ignored and payments will be authorized at a later date.  We <em>ignore</em> failures here and perhaps log some information for offline reconciliation.</p></li>
+<li><p>If either the <em>workload</em> or <em>assets</em> service is unavailable, the request returns a 503 Service Unavailable to the mobile client, the mobile client handles this error and prompts the user to try again.</p></li>
+</ol>
+<p>We start with a functional test that looks like the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_functional_load_drivers_page</span><span class="p">():</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;cmeiklejohn&quot;</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://api-server/drivers/{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>This test only assumes a fault-free execution and doesn’t consider, or specify, what the application behavior should be, under fault.</p>
+</section>
+<section id="applying-filibuster">
+<h2>Applying Filibuster<a class="headerlink" href="#applying-filibuster" title="Permalink to this headline"></a></h2>
+<p>We test this application using Filibuster, which causes us to make the first modification when Service D fails from fault injection.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_functional_load_drivers_page</span><span class="p">():</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;cmeiklejohn&quot;</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://api-server/drivers/{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">filibuster</span><span class="o">.</span><span class="n">assertions</span><span class="o">.</span><span class="n">was_fault_injected</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">503</span>
+    <span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>Then, we make another modification when Filibuster executes the test where Service B fails.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_functional_load_drivers_page</span><span class="p">():</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="s2">&quot;cmeiklejohn&quot;</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://api-server/drivers/{}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">))</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">filibuster</span><span class="o">.</span><span class="n">assertions</span><span class="o">.</span><span class="n">was_fault_injected</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">filibuster</span><span class="o">.</span><span class="n">assertions</span><span class="o">.</span><span class="n">was_fault_injected_on</span><span class="p">(</span><span class="s2">&quot;payments&quot;</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">503</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="n">result</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+</pre></div>
+</div>
+<p>Great.</p>
+</section>
+<section id="failure-permutations">
+<h2>Failure Permutations<a class="headerlink" href="#failure-permutations" title="Permalink to this headline"></a></h2>
+<p>Now, we’re left asking <em>what tests does Filibuster actually need to run, while performing resilience testing?</em></p>
+<section id="first-principle-tolerance-to-failure-of-single-service">
+<h3>First Principle: Tolerance to Failure of Single Service<a class="headerlink" href="#first-principle-tolerance-to-failure-of-single-service" title="Permalink to this headline"></a></h3>
+<p>We know that we need to, at a minimum, test tolerance to a single failure of one of each service’s dependencies.  Let’s use the ride sharing example to understand what we mean.</p>
+<p>First, we need to test how Service B reacts to it’s only dependency, Service E failing.  We need to do this for <em>each of the ways</em> that Service E can fail.  For instance, any possible error responses that E might return to relay some sort of context-specific error (e.g., 404 Not Found) as well as any possible exceptions that Service B’s RPC client might throw (e.g., Connection Error, Timeout.) .</p>
+<img alt="_images/filibuster-dr-2.png" src="_images/filibuster-dr-2.png" />
+<p>Similarly, we will also need to repeat this process for each of Service A’s dependencies as well.  Starting with Service B, we repeat this process for Service B, C, and then D.</p>
+<img alt="_images/filibuster-dr-3.png" src="_images/filibuster-dr-3.png" />
+</section>
+<section id="second-principle-permutations-of-service-s-direct-dependencies">
+<h3>Second Principle: Permutations of Service’s Direct Dependencies<a class="headerlink" href="#second-principle-permutations-of-service-s-direct-dependencies" title="Permalink to this headline"></a></h3>
+<p>We also need to test the possible permutations of failures for each services’ direct dependencies.  This is done
+for a very specific reason: the service’s implementation may contain a conditional based on <em>a certain combination of failures</em>.</p>
+<p>In this example, it is possible that Service A contains code that performs a very specific action when <em>Service B and Service D fail together for a particular exception type.</em></p>
+<img alt="_images/filibuster-dr-4.png" src="_images/filibuster-dr-4.png" />
+<p>Therefore, we also iterate these combinations as well: assuming a single failure, this would result in the combinations (B, C), (B, D), (C, D), and (B, C, D).</p>
+<p>But, we’re left with the question: <em>do we need to test the combination where Service E and Service D fail together?</em></p>
+<img alt="_images/filibuster-dr-5.png" src="_images/filibuster-dr-5.png" />
+<p>The answer is: no.</p>
+</section>
+</section>
+<section id="id1">
+<h2>Dynamic Reduction<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>This is the basis of our algorithmic optimization for service-level fault injection testing (SFIT) that we call dynamic reduction.</p>
+<p>Here’s the intution behind dynamic reduction:</p>
+<ol class="arabic simple">
+<li><p>We have already tested the effect on Service A when Service D fails.</p></li>
+<li><p>We have already tested the effect on Service B when Service E fails.</p></li>
+<li><p>We have already tested all of the possible failures (and success) outcomes from Service B, as directly observable by Service A.</p></li>
+<li><p>From these known outcomes, we <em>already know</em> what the outcome of this test will be from outcomes we have already observed.</p></li>
+</ol>
+<p><em>Now, it is important to note that we know this information based on the following assumptions we place on the functional test being executed: a.) service responses, as part of this single functional test execution, are fixed; b.) service outcomes are not dependendent on previous failures; and c.) the functional test is free from observable nondeterminism, either scheduling or data nondeterminism.  In short, dynamic reduction is not sound in general, but only with these assumptions.</em></p>
+<img alt="_images/filibuster-dr-6.png" src="_images/filibuster-dr-6.png" />
+<p>The property that we exploit here, we refer to as <em>service encapsulation</em>: the idea that when Service E fails, it’s failure is not directly observable by Service A, but rather only visible through Service B, by the response that Service B returns to Service A.  Therefore, if we can identify the possible responses that can be returned by Service B and test A’s resilence to these failures, we do not need to redundantly test A’s direct dependencies along with failures deeper in the call chain.</p>
+<p>However, this optimization relies on the fact that service implementations return error codes that are conditional on the behavior of their dependencies and do not encode the failure into a response that is considered successful.  As an example, if Service B returned a successful response to Service A that contained a boolean indicating whether or not Service E responded to it’s request successfully, then this optimization would not be sound (as stated above, it is <em>not</em> generally sound.)  We believe that this type of design where errors are encoded through error responses in failures is very important: <em>it enables compositional reasoning that can directly reduce testing overhead.</em></p>
+</section>
+<section id="audible-vs-netflix">
+<h2>Audible vs. Netflix<a class="headerlink" href="#audible-vs-netflix" title="Permalink to this headline"></a></h2>
+<p>As part of our [corpus creation](<a class="reference external" href="http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html">http://christophermeiklejohn.com/filibuster/2021/10/02/filibuster-1.html</a>), we recreated part of Audible and Netflix’s infrastructure from information we gethered by watching publicly available talks on their uses of chaos engineering: a super accurate reimplementation of each service isn’t extremely important here, because the more interesting, general point, is the graph structure.</p>
+<img alt="_images/filibuster-dr-7.png" src="_images/filibuster-dr-7.png" />
+<p>You can see this benefit in the recreation of Audible’s infrastructure for our corpus.  In this example, to generate all of the possible tests required for full coverage of two possible call site exceptions and a number of service-specific error codes that are returned, we had to generate <em>69</em> tests, but only needed to execute <em>31</em> of these tests: service encapsulation can be exploited as the Audible Download Service and Content Delivery Servies hide the failures of their components from the rest of the application.</p>
+<p><em>Deeper, microservice graphs, enables compositional testing through service encapsulation.</em></p>
+<p>Graphs that grow wider, rather than deeper, do not benefit from these types of optimizations.</p>
+<img alt="_images/filibuster-dr-8.png" src="_images/filibuster-dr-8.png" />
+<p>To contrast, this is a recreation of the Netflix homepage loading process in our corpus.  Here, there’s a large fanout from a single service where a number of fallbacks are specified.  As we demonstrated above, we need to test <em>all of the combinations to ensure that there doesn’t exist application code conditional on some set of failures.</em>  Therefore, we are left with a combinatorial explosion: we have to generate 1,606 tests and can only remove 3 of those tests through dynamic reduction (resulting in 1,603 executed tests.)</p>
+<p>In fact, while this component of Netflix doesn’t share the desired structure to take advantage of this compositional testing, the larger Netflix graph does (seen below): a property that we believe holds for most microservice applications as evidenced by our Audible example, the Netflix example, and an example service graph we saw from Expedia as part of our corpus construction.</p>
+<p>&lt;img src=”/img/netflix-topology.png” width=”600”&gt;</p>
+<p>If you’re interested in learning more about dynamic reduction, stay tuned for our upcoming ACM SoCC ‘21 presentation and paper where we talk about it in detail.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline"></a></h2>
+<p>This was a short introduction to an optimization for service-level fault injection testing with Filibuster, called dynamic reduction, that reduces the overhead of resilience testing in the local development environment.  With our upcoming release of Filibuster, we will release full documentation on our tool, an example corpus and this tutorial.</p>
+<p>Stay locked in by following us [&#64;FilibusterFault](<a class="reference external" href="http://www.twitter.com/FilibusterFault">http://www.twitter.com/FilibusterFault</a>) on Twitter to know when our next post will be available.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="research-2.html" class="btn btn-neutral float-left" title="What is SFIT?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="running.html" class="btn btn-neutral float-right" title="Running" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Christopher S. Meiklejohn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

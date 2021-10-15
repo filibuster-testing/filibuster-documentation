@@ -67,6 +67,19 @@ Depending on your role, we recommend different sections of our documentation.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Research Blog
+
+   research-1
+   research-2
+   research-3
+   research-4
+
+.. raw:: html
+
+   <hr>
+
+.. toctree::
+   :maxdepth: 2
    :caption: Filibuster Corpus
 
    running

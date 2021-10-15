@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What is SFIT? &mdash; filibuster  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Dynamic Reduction" href="research-3.html" />
+    <link rel="prev" title="Researching Resilience: Lack of Corpus" href="research-1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> filibuster
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Using Filibuster</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Research Blog</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="research-1.html">Researching Resilience: Lack of Corpus</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What is SFIT?</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-observations">Core Observations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#approach">Approach</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#audible-example">Audible Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fault-injection">Fault Injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fault-identification">Fault Identification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dynamic-binding">Dynamic Binding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-adaptation">Test Adaptation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#improved-coverage">Improved Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="research-3.html">Dynamic Reduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Filibuster Corpus</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cinema-examples.html">Cinema Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="industry-examples.html">Industry Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending Filibuster</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-overview.html">Instrumentation Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-flask.html">Instrumentation Example: Flask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-requests.html">Instrumentation Example: Requests</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Writing Instrumentation: GRPC</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-overview.html">Instrumenting GRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-client.html">Instrumenting Remote Service Calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-server.html">Instrumenting Services To Receive Calls</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-client-fi.html">Enabling Fault-Injection in the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-grpc-client-analysis.html">Static Analysis</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Filibuster Server API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-formats.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-server-create.html">HTTP API: Create</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-server-update.html">HTTP API: Update</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instrumentation-server-new-test-execution.html">HTTP API: New Test Execution</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">filibuster</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>What is SFIT?</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/research-2.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="what-is-sfit">
+<h1>What is SFIT?<a class="headerlink" href="#what-is-sfit" title="Permalink to this headline"></a></h1>
+<p>In this post, we will discuss our technique for identifying resilience bugs in
+microservice applications, called Service-level Fault Injection Testing (SFIT).
+SFIT takes a developer-first approach, integrating fault injection testing into
+the development process as early as possible without requiring developers to
+write specifications in a dedicated formal language. This decision is key,
+as it seamlessly integrates our approach into developers’ existing development
+environments and toolchains.</p>
+<p>We specifically target the types of
+resilience issues that are able to be identified during development, in the
+local development environment, with traditional mocking techniques.   As
+far as a methodology for fault injection, we build on observations made by
+systems as early as <a class="reference external" href="https://ieeexplore.ieee.org/document/364536/">Ferrari (1995)</a>:
+lower-level faults – from hardware faults to
+operating system faults – can be tested in the application layer by triggering
+the coorresponding application-level manifestation of that fault.  As far as
+implementation is concerned, we follow in the path of systems like
+<a class="reference external" href="https://ieeexplore.ieee.org/document/5270313">LFI (2009)</a> and
+<a class="reference external" href="https://dl.acm.org/doi/abs/10.1145/2168836.2168865">AFEX (2012)</a>
+focusing on library-level fault injection through method or function
+interposition.</p>
+<p>The architecture of Filibuster, the prototype implementation of SFIT, is shown
+below.  In this architectural diagram, we see an example where Service A talks
+to B, and B talks to C before returning a response back to the caller.  At each
+step of communication, interposition placed at Service A, B, and C’s server and
+client libraries communicates with a centralized testing server in order to know
+when remote calls are made, where they are terminated, what they return, and
+whether or not to inject a fault.</p>
+<img alt="_images/filibuster-architecture.png" src="_images/filibuster-architecture.png" />
+<section id="core-observations">
+<h2>Core Observations<a class="headerlink" href="#core-observations" title="Permalink to this headline"></a></h2>
+<p>SFIT builds on three key observations we made about how microservice applications
+are being developed today:</p>
+<ul class="simple">
+<li><p><em>Microservices developed in isolation</em>.  Microservice architectures are typically adopted when teams need to facilitate rapid growth, thereby breaking the team into smaller groups that develop individual services that adhere to a contract. This contract typically requires that two or more teams meet and agree to an API between the services that they manage. Therefore, individual team members typically do not understand the state or internals of services outside of their control well enough to write a detailed specification of the application to automatically verify it with a model checker.</p></li>
+<li><p><em>Mocking could prevent failures.</em>  Based on our corpus construction, all of the bugs that we reimplemented and identified using Filibuster could have been detected earlier if the developers had written mocks that simulated the failure or malfunctioning of the remote service in a testing environment.  We cannot speak to why these tests were not written, but we assume that this might be the case for two reasons; (i) writing tests with mocks is a time consuming process with minimal apparent benefit to the developer as the failure case may be rare, or (ii) the failure case is not known to the developer at the time of development.  <em>Note: Filibuster does not target byzantine or other data corruption failures (e.g., malformed responses, incorrect responses) but targets service timeouts, service unavailabilities, and known standardized responses indicating service failure (e.g., GRPC error codes such as `DEADLINE_EXCEEDED` and `FAILED_PRECONDITION`, HTTP 4XX-5XX response codes and bodies.)</em></p></li>
+<li><p><em>Functional tests are the gold standard.</em>  In lieu of writing specifications, developers write multiple end-to-end functional tests that verify application behavior. Therefore, developers already believe that the investment in end-to-end testing is worthwhile, and we believe any successful fault injection approach should start there.</p></li>
+</ul>
+<p>As we will show, SFIT, as a technique, exploits these three key observations.</p>
+</section>
+<section id="approach">
+<h2>Approach<a class="headerlink" href="#approach" title="Permalink to this headline"></a></h2>
+<p>Let’s look at how SFIT, starting from a single passing fault-free functional
+test, can be used to generate the additional tests needed to ensure resilience.</p>
+<p>For simplicity of presentation, we make two assumptions: services communicate
+over HTTP, which is not a limiting factor of our design as our prototype already
+supports GRPC-based services, and that a single functional test exercises all
+application behavior. In practice, applications will have an entire suite of
+functional tests to cover all application behavior and SFIT will leverage all of
+them.</p>
+<p>SFIT starts with a passing end-to-end functional test written by the application
+developer that exercises some behavior under some fault-free scenario and
+asserts the correct outcome.  We assume that this test is already passing, is
+nondeterministic, and all logical errors have been ruled out – with the
+exception of logical errors contained in failure handling code that is not
+currently being exercised by this test.</p>
+<p>SFIT starts by executing this initial fault-free execution, and at each point
+where we reach a location where remote communication occurs to another service,
+an additional test execution is scheduled for each way that the calling
+service’s communication library can fail: if you’re familiar with a system like
+<a class="reference external" href="https://patricegodefroid.github.io/public_psfiles/ndss2008.pdf">SAGE (2008)</a>,
+this will sound similiar to the mechanism SAGE uses to schedule all possible
+alternative executions based on negating all conjuncts of the current path
+condition.  For example, if Service A goes to communicate with Service B, and we
+know the library that Service A uses to communicate with Service B can raise a
+<code class="docutils literal notranslate"><span class="pre">ConnectionError</span></code> or <code class="docutils literal notranslate"><span class="pre">Timeout</span></code>, we know that we need to execute the test two
+more times: one to explore what happens when that call throws each of the two
+possible exceptions.  This results in a depth-first search of the fault space,
+starting from the root service.</p>
+<p>In order to reset the state in between each test execution, we either provide
+SFIT with a script that can be used to reset service state – through some sort
+of soft-restart – or SFIT will restart the services in between each test
+execution.</p>
+</section>
+<section id="audible-example">
+<h2>Audible Example<a class="headerlink" href="#audible-example" title="Permalink to this headline"></a></h2>
+<p>For a more detailed example, consider the reproduction of part of the Audible
+service taken from our survey.  We’ll assume for now that the calling library
+can only throw two possible errors: a <code class="docutils literal notranslate"><span class="pre">ConnectionError</span></code> for all services and a
+<code class="docutils literal notranslate"><span class="pre">Timeout</span></code> where a timeout has been specified at the callsite.</p>
+<img alt="_images/audible-architecture.png" src="_images/audible-architecture.png" />
+<p>In this example, the request from our functional test originates at the Audible
+App. The first request issued is to the Content Delivery Engine which can fail
+with a Timeout or ConnectionError. We add two executions on the stack of
+executions to explore and continue executing the test.</p>
+<p>Next, we reach the Content Delivery Service and schedule the two executions
+where Content Delivery Engine was successful and the call to Content Delivery
+Service fails. This is performed for the entirety of the initial request. As we
+execute all tests in the stack, we may reveal new paths by triggering failures.
+For example, failure of the Content Delivery Engine could cause an additional
+path to be exposed to a logging service. We continue to explore until all paths
+have been fully explored.</p>
+<p>In this example, several services have multiple dependencies; for example, the
+Audible Download Service talks to the Ownership service, the Activation service,
+and the Stats service. In this case, we have to schedule executions that cover
+the entire space of failures — all of the ways each service can fail
+independently with all of the combinations of how they can fail with one
+another.</p>
+<p>As the developer runs these generated tests, they will have to adapt their
+functional test accordingly to consider failure. To do this, we provide a helper
+module that allows the developer to write conditional assertions for the
+executions where a failure is present.</p>
+</section>
+<section id="fault-injection">
+<h2>Fault Injection<a class="headerlink" href="#fault-injection" title="Permalink to this headline"></a></h2>
+<p>Our approach relies on the ability to inject failures for remote calls and
+therefore it is essential that we can instrument the library used for making
+remote calls to alter their response. This ability to interpose on remote calls
+is already rather commonplace: many popular telemetry systems (e.g.,
+opentelemetry, opentracing) already provide libraries that automatically wrap
+calls to common libraries used for remote communication (e.g., HTTP, gRPC) in
+order to assist developers in understanding application performance by sending
+telemetry information to a remote telemetry service (e.g., jaeger).</p>
+<p>We leverage this instrumentation design for fault injection: instead of
+returning the actual response from the remote service, we return a failure
+response instead based on the fault that was injected. This instrumentation
+communicates with a server process that aggregates information collected by the
+instrumentation in order to determine the next test to run.</p>
+</section>
+<section id="fault-identification">
+<h2>Fault Identification<a class="headerlink" href="#fault-identification" title="Permalink to this headline"></a></h2>
+<p>Our approach injects faults that represent the failures that can occur for a
+given service. This relies on knowing two different types of failures:</p>
+<ul class="simple">
+<li><p><strong>Failures originating at the call site.</strong>  We have to consider faults that can originate at the call site. For example, when using the requests library in Python for performing HTTP requests, there are 23 exceptions that the library can raise when performing a request. To address this concern, we can either specify the module containing the exceptions or specify them manually in configuration. For this post, we will only consider the two most common: <cite>Timeout</cite> and <cite>ConnectionError.</cite> _Note: In the case of <cite>Timeout</cite>, Filibuster can optionally wait the timeout period (or, just short of, or just past) before returning the exception or not in order to identify failures from cascading timeouts.  Any and all of these combinations can be tested by the application developer._</p></li>
+<li><p><strong>Failures originating at the remote service.</strong>  A service might handle a failure of one of its dependencies and return a failure. For example, if a service that is a dependency of another service throws a Timeout exception, it may be caught and a 500 returned. We use a static analysis on the service’s source code to over-approximate the responses that the service can return: in Flask, this is possible using looking for <cite>return</cite> or <cite>raise</cite> statements.</p></li>
+</ul>
+</section>
+<section id="dynamic-binding">
+<h2>Dynamic Binding<a class="headerlink" href="#dynamic-binding" title="Permalink to this headline"></a></h2>
+<p>One of the difficulties with HTTP is that requests made between different
+services use a URL provided as a string. This string may not be a unique
+identifier of the actual service that is being contacted, as these URLs may use
+IP addresses or unrelated DNS names.</p>
+<p>To solve this, we use additional instrumentation to record the service that is
+actually reached when a call is made. This instrumentation, instead of being
+used on the caller’s library used for remote communication, is placed on the web
+framework that receives the request. Therefore, the instrumentation can record
+the callee’s service name before the request is processed by the application
+code. Similar to the instrumentation that we use on the caller’s side, we
+leverage the same design as the common telemetry systems (e.g., opentelemetry)
+take and transmit this information to the server to determine the next test to
+execute.</p>
+<p>When one of these instrumentation calls is received by the server to identify
+the target of a remote call, any service-specific failures (e.g., GRPC
+<cite>FAILED_PRECONDITION</cite>, HTTP 404 Not Found) are also then scheduled as additional
+test executions.   SFIT cannot schedule these errors until it knows the target
+of the remote call – i.e., dynamic binding has been resolved at runtime after
+the call has been issued.</p>
+</section>
+<section id="test-adaptation">
+<h2>Test Adaptation<a class="headerlink" href="#test-adaptation" title="Permalink to this headline"></a></h2>
+<p>As developers will be starting with a functional test that assumes no failures,
+developers will need to update their functional test to contain proper test
+oracles for the cases where dependent components fail.</p>
+<p>To do this, we provide a helper module for writing conditional assertions. This
+helper lets the developer write a conditional statement such as <em>if a fault was
+injected on Service A</em> and place appropriate assertions on what the behavior of
+the system should be under failure. Developers will add these conditional
+assertions into the existing functional test. We do not believe this to be an
+intrusive process, as the manual approach (using mocks) would require test
+duplication, each with custom assertions. For a similar reason, we avoid static
+test generation and favor a dynamic approach where large numbers of tests do not
+need to be consistently regenerated during software development.</p>
+<p>We imagine a typical workflow as the following. Developers start with a passing
+functional test and SFIT begins injecting faults. As faults are injected, the
+functional test will fail with assertion errors. Using the helper, developers
+will write an conditional assertion to capture desired failure behavior. An
+example of one such assertion for the Audible application might say __if a fault
+was injected on the stats service, the service should still play the
+audiobook.__ From there, the developer can use the counterexample to replay the
+previous failing test to validate these newly added assertions.</p>
+</section>
+<section id="improved-coverage">
+<h2>Improved Coverage<a class="headerlink" href="#improved-coverage" title="Permalink to this headline"></a></h2>
+<p>Finally, at the end of execution, SFIT aggregates coverage reports across all
+executions that were generated by the tool in order to produce a coverage
+report.</p>
+<p>The following is a coverage report for a small cinema application we adapted
+from a microservice tutorial written by RedHat.  The functional test we started
+with only exercised the golden path: all services reponded without failure.
+SFIT was able to close the gap and generate the tests for all possible failure
+paths; we highlight the automatically generated coverage in yellow.</p>
+<img alt="_images/filibuster-coverage.png" src="_images/filibuster-coverage.png" />
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline"></a></h2>
+<p>In this post, we provided an overview of our new fault injection technique for
+improving resilience of microservice applications named Service-level Fault
+Injection Testing.  After reading this, you might be left with a few questions,
+for instance:</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="research-1.html" class="btn btn-neutral float-left" title="Researching Resilience: Lack of Corpus" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="research-3.html" class="btn btn-neutral float-right" title="Dynamic Reduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Christopher S. Meiklejohn.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

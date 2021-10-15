@@ -150,8 +150,8 @@ In fact, while this component of Netflix doesn't share the desired structure to 
 
 If you're interested in learning more about dynamic reduction, stay tuned for our upcoming ACM SoCC '21 presentation and paper where we talk about it in detail.
 
-Conclusion
-----------
+Wrap-Up
+-------
 
 This was a short introduction to an optimization for service-level fault injection testing with Filibuster, called dynamic reduction, that reduces the overhead of resilience testing in the local development environment.  With our upcoming release of Filibuster, we will release full documentation on our tool, an example corpus and this tutorial.
 

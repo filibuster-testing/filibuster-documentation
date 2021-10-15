@@ -248,8 +248,8 @@ we integrated Filibuster both in the local development environment as part of
 the development experience and integrated it with Amazon's CodeBuild CI/CD
 environment as well.
 
-Conclusion
-----------
+Wrap-Up
+-------
 
 Our corpus is one of the three main contributions of our ACM SoCC '21 paper on
 Service-level Fault Injection Testing.  We believe that the lack of work on

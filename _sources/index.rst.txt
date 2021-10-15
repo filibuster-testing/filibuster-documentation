@@ -49,6 +49,19 @@ Depending on your role, we recommend different sections of our documentation.
 * For *general readers*, interested in learning how Filibuster can be used on a microservice application to improve resilience, we recommend the Tutorial.
 * For *application developers*, looking to use Filibuster on their application to identify resilience issues, we recommend the Tutorial.
 * For *infrastructure engineers*, looking to extend Filibuster to support different programming languages and remote procedure call frameworks, we recommend you review the sections on Extending Filibuster and Writing Instrumentation.
+* 
+
+.. raw:: html
+
+   <hr>
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Overview
+
+   research-1
+   research-2
+   research-3
 
 .. raw:: html
 
@@ -61,18 +74,6 @@ Depending on your role, we recommend different sections of our documentation.
    tutorial
    tools
    timeouts
-
-.. raw:: html
-
-   <hr>
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Research Blog
-
-   research-1
-   research-2
-   research-3
 
 .. raw:: html
 

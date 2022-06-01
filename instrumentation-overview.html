@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instrumentation Overview &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -110,10 +111,10 @@
            <div itemprop="articleBody">
              
   <section id="instrumentation-overview">
-<h1>Instrumentation Overview<a class="headerlink" href="#instrumentation-overview" title="Permalink to this headline"></a></h1>
+<h1>Instrumentation Overview<a class="headerlink" href="#instrumentation-overview" title="Permalink to this heading"></a></h1>
 <p>In this section, we will discuss the Filibuster instrumentation and how it is used for in fault injection testing.  The focus of this presentation will be on our built-in HTTP instrumentation.  However, the insights that we provide are valuable to anyone looking to instrument other libraries for use with Filibuster.</p>
 <section id="goals">
-<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline"></a></h2>
+<h2>Goals<a class="headerlink" href="#goals" title="Permalink to this heading"></a></h2>
 <p>The goals of instrumenting libraries for use with Filibuster are the following:</p>
 <ul class="simple">
 <li><p>Identify when and where remote calls are made between two different services.</p></li>
@@ -123,7 +124,7 @@
 <p>We discuss each goal below to outline the overall architecture of Filibuster.</p>
 </section>
 <section id="filibuster-architecture">
-<h2>Filibuster Architecture<a class="headerlink" href="#filibuster-architecture" title="Permalink to this headline"></a></h2>
+<h2>Filibuster Architecture<a class="headerlink" href="#filibuster-architecture" title="Permalink to this heading"></a></h2>
 <img alt="_images/architecture-horiz.png" src="_images/architecture-horiz.png" />
 <p>Filibuster runs a server that is responsible for running the functional test for the application, generating additional test executions that try the various ways calls can fail between services, running those additional test executions, gathering coverage data and reporting the results back to the developer.</p>
 <p>We now look at the concrete functionality we need to address the three goals:</p>
@@ -134,7 +135,7 @@
 </ul>
 </section>
 <section id="anatomy-of-a-request">
-<h2>Anatomy of a Request<a class="headerlink" href="#anatomy-of-a-request" title="Permalink to this headline"></a></h2>
+<h2>Anatomy of a Request<a class="headerlink" href="#anatomy-of-a-request" title="Permalink to this heading"></a></h2>
 <p>To understand how Filibuster addresses the first two goals, we look at a diagram that shows when, and from where, the instrumentation calls are made.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -143,7 +144,7 @@
 <img alt="_images/instrumentation.png" src="_images/instrumentation.png" />
 <p>Referencing the above diagram, instrumentation works as follows.  First, before the target method is invoked, instrumented libraries should first issue an invocation call to Filibuster to notify it of the remote call that is about to be issued.  The return value from this call will notify the instrumentation on whether or not a fault should be injected.  Next, if the call is issued, the target of the call should notify the Filibuster server of the service that received the remote call.  Finally, if the call is actually issued, the instrumentation should notify the Filibuster that the call has completed with the response value.</p>
 <p>The table below and diagram describes where these instrumentation calls should be placed in the request path.</p>
-<table class="colwidths-auto docutils align-left" id="id1">
+<table class="docutils align-left" id="id1">
 <caption><span class="caption-text">Request process with instrumentation endpoints and instrumentation types</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>No.</p></th>
@@ -194,13 +195,13 @@
 </table>
 </section>
 <section id="metadata-propagation">
-<h2>Metadata Propagation<a class="headerlink" href="#metadata-propagation" title="Permalink to this headline"></a></h2>
+<h2>Metadata Propagation<a class="headerlink" href="#metadata-propagation" title="Permalink to this heading"></a></h2>
 <p>We now look at how we address the third goal.</p>
 <p>Filibuster requires that instrumentation metadata be propagated between services on nested service calls.  To achieve this, our instrumentation automatically assigns these values to headers associated with each call and then parses these values when received with an incoming call.</p>
 <p>We refer the reader to the following diagram for a depiction of how this occurs in the case of our examples written with Flask and the <code class="docutils literal notranslate"><span class="pre">requests</span></code> library.</p>
 <img alt="_images/instrumentation-metadata.png" src="_images/instrumentation-metadata.png" />
 <p>Instrumentation calls made to the Filibuster server require that five values be present, we discuss these below.</p>
-<table class="colwidths-auto docutils align-left" id="id2">
+<table class="docutils align-left" id="id2">
 <caption><span class="caption-text">Metadata propagated by instrumentation required in instrumentation calls</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>

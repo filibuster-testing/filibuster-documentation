@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What is SFIT? &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -115,7 +116,7 @@
            <div itemprop="articleBody">
              
   <section id="what-is-sfit">
-<h1>What is SFIT?<a class="headerlink" href="#what-is-sfit" title="Permalink to this headline"></a></h1>
+<h1>What is SFIT?<a class="headerlink" href="#what-is-sfit" title="Permalink to this heading"></a></h1>
 <p>In this post, we will discuss our technique for identifying resilience bugs in
 microservice applications, called Service-level Fault Injection Testing (SFIT).
 SFIT takes a developer-first approach, integrating fault injection testing into
@@ -145,7 +146,7 @@ when remote calls are made, where they are terminated, what they return, and
 whether or not to inject a fault.</p>
 <img alt="_images/filibuster-architecture.png" src="_images/filibuster-architecture.png" />
 <section id="core-observations">
-<h2>Core Observations<a class="headerlink" href="#core-observations" title="Permalink to this headline"></a></h2>
+<h2>Core Observations<a class="headerlink" href="#core-observations" title="Permalink to this heading"></a></h2>
 <p>SFIT builds on three key observations we made about how microservice applications
 are being developed today:</p>
 <ul class="simple">
@@ -156,7 +157,7 @@ are being developed today:</p>
 <p>As we will show, SFIT, as a technique, exploits these three key observations.</p>
 </section>
 <section id="approach">
-<h2>Approach<a class="headerlink" href="#approach" title="Permalink to this headline"></a></h2>
+<h2>Approach<a class="headerlink" href="#approach" title="Permalink to this heading"></a></h2>
 <p>Let’s look at how SFIT, starting from a single passing fault-free functional
 test, can be used to generate the additional tests needed to ensure resilience.</p>
 <p>For simplicity of presentation, we make two assumptions: services communicate
@@ -190,7 +191,7 @@ of soft-restart – or SFIT will restart the services in between each test
 execution.</p>
 </section>
 <section id="audible-example">
-<h2>Audible Example<a class="headerlink" href="#audible-example" title="Permalink to this headline"></a></h2>
+<h2>Audible Example<a class="headerlink" href="#audible-example" title="Permalink to this heading"></a></h2>
 <p>For a more detailed example, consider the reproduction of part of the Audible
 service taken from our survey.  We’ll assume for now that the calling library
 can only throw two possible errors: a <code class="docutils literal notranslate"><span class="pre">ConnectionError</span></code> for all services and a
@@ -219,7 +220,7 @@ module that allows the developer to write conditional assertions for the
 executions where a failure is present.</p>
 </section>
 <section id="fault-injection">
-<h2>Fault Injection<a class="headerlink" href="#fault-injection" title="Permalink to this headline"></a></h2>
+<h2>Fault Injection<a class="headerlink" href="#fault-injection" title="Permalink to this heading"></a></h2>
 <p>Our approach relies on the ability to inject failures for remote calls and
 therefore it is essential that we can instrument the library used for making
 remote calls to alter their response. This ability to interpose on remote calls
@@ -235,7 +236,7 @@ communicates with a server process that aggregates information collected by the
 instrumentation in order to determine the next test to run.</p>
 </section>
 <section id="fault-identification">
-<h2>Fault Identification<a class="headerlink" href="#fault-identification" title="Permalink to this headline"></a></h2>
+<h2>Fault Identification<a class="headerlink" href="#fault-identification" title="Permalink to this heading"></a></h2>
 <p>Our approach injects faults that represent the failures that can occur for a
 given service. This relies on knowing two different types of failures:</p>
 <ul class="simple">
@@ -244,7 +245,7 @@ given service. This relies on knowing two different types of failures:</p>
 </ul>
 </section>
 <section id="dynamic-binding">
-<h2>Dynamic Binding<a class="headerlink" href="#dynamic-binding" title="Permalink to this headline"></a></h2>
+<h2>Dynamic Binding<a class="headerlink" href="#dynamic-binding" title="Permalink to this heading"></a></h2>
 <p>One of the difficulties with HTTP is that requests made between different
 services use a URL provided as a string. This string may not be a unique
 identifier of the actual service that is being contacted, as these URLs may use
@@ -266,7 +267,7 @@ of the remote call – i.e., dynamic binding has been resolved at runtime after
 the call has been issued.</p>
 </section>
 <section id="test-adaptation">
-<h2>Test Adaptation<a class="headerlink" href="#test-adaptation" title="Permalink to this headline"></a></h2>
+<h2>Test Adaptation<a class="headerlink" href="#test-adaptation" title="Permalink to this heading"></a></h2>
 <p>As developers will be starting with a functional test that assumes no failures,
 developers will need to update their functional test to contain proper test
 oracles for the cases where dependent components fail.</p>
@@ -289,7 +290,7 @@ audiobook.__ From there, the developer can use the counterexample to replay the
 previous failing test to validate these newly added assertions.</p>
 </section>
 <section id="improved-coverage">
-<h2>Improved Coverage<a class="headerlink" href="#improved-coverage" title="Permalink to this headline"></a></h2>
+<h2>Improved Coverage<a class="headerlink" href="#improved-coverage" title="Permalink to this heading"></a></h2>
 <p>Finally, at the end of execution, SFIT aggregates coverage reports across all
 executions that were generated by the tool in order to produce a coverage
 report.</p>
@@ -301,7 +302,7 @@ paths; we highlight the automatically generated coverage in yellow.</p>
 <img alt="_images/filibuster-coverage.png" src="_images/filibuster-coverage.png" />
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline"></a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h2>
 <p>In this post, we provided an overview of our new fault injection technique for
 improving resilience of microservice applications named Service-level Fault
 Injection Testing.  After reading this, you might be left with a few questions,

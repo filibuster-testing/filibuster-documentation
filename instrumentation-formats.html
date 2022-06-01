@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data Types &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -109,7 +110,7 @@
            <div itemprop="articleBody">
              
   <section id="data-types">
-<h1>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline"></a></h1>
+<h1>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading"></a></h1>
 <p>All instrumentation calls should contain JSON payloads and return JSON bodies in the response.  Certain fields require particular data formats, these are described in this section; all other data formats are discussed in the sections for each API request that requires it.</p>
 <p>For reference, we include an example request body for the <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/filibuster/create</span></code> call for the <code class="docutils literal notranslate"><span class="pre">cinema-1</span></code> example.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -136,9 +137,9 @@
 </pre></div>
 </div>
 <section id="instrumentation-type">
-<h2>Instrumentation Type<a class="headerlink" href="#instrumentation-type" title="Permalink to this headline"></a></h2>
+<h2>Instrumentation Type<a class="headerlink" href="#instrumentation-type" title="Permalink to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">instrumentation_type</span></code> field in an instrumentation call is an enumeration, provided as a string.  The valid values are provided in the table below.  Each of these options is described in detail in the following sections where the API is described.</p>
-<table class="colwidths-auto force-left docutils align-left" id="id1">
+<table class="force-left docutils align-left" id="id1">
 <caption><span class="caption-text">Enumeration for the <code class="docutils literal notranslate"><span class="pre">instrumentation_type</span></code> field in either a request payload or response body.</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
@@ -159,7 +160,7 @@
 </table>
 </section>
 <section id="vector-clocks">
-<h2>Vector Clocks<a class="headerlink" href="#vector-clocks" title="Permalink to this headline"></a></h2>
+<h2>Vector Clocks<a class="headerlink" href="#vector-clocks" title="Permalink to this heading"></a></h2>
 <p>Vector clocks (and origin vector clocks) should be provided as a JSON object.  This JSON object should be structured with a single key for each service and it’s value the associated counter for each action.</p>
 <p>We provide an example:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -177,7 +178,7 @@
 <p>We refer the reader to our implementation of vector clocks in Python to understand implementation and the algorithm: this is outside of the scope of this documentation.</p>
 </section>
 <section id="execution-index">
-<h2>Execution Index<a class="headerlink" href="#execution-index" title="Permalink to this headline"></a></h2>
+<h2>Execution Index<a class="headerlink" href="#execution-index" title="Permalink to this heading"></a></h2>
 <p>Execution indexes should be encoded as a string that is JSON-parseable into an array.  In our example, the following execution index:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;[[\&quot;68ae4deac392aa61feeeb0634d243d57\&quot;, 1]]&quot;</span>
 </pre></div>

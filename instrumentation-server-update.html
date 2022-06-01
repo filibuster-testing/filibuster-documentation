@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HTTP API: Update &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -114,7 +115,7 @@
            <div itemprop="articleBody">
              
   <section id="http-api-update">
-<h1>HTTP API: Update<a class="headerlink" href="#http-api-update" title="Permalink to this headline"></a></h1>
+<h1>HTTP API: Update<a class="headerlink" href="#http-api-update" title="Permalink to this heading"></a></h1>
 <p>The UPDATE API (<code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/filibuster/update</span></code>) provided by the Filibuster server is responsible for providing additional information about remote calls to the Filibuster server in order to generate additional fault injection scenarios.</p>
 <p>Updates can come in two forms:</p>
 <ul class="simple">
@@ -122,12 +123,12 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">invocation_complete</span></code>: invoked by the call site to report the value returned by the remote call.</p></li>
 </ul>
 <section id="request">
-<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline"></a></h2>
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this heading"></a></h2>
 <p>We describe the necessary parameters for a request below along with an example taken from the <code class="docutils literal notranslate"><span class="pre">cinema-1</span></code> example.</p>
 <section id="field-descriptions">
-<h3>Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permalink to this headline"></a></h3>
+<h3>Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permalink to this heading"></a></h3>
 <p>In the following table, we present descriptions of the fields in the request payload.</p>
-<table class="colwidths-auto force-left docutils align-left" id="id1">
+<table class="force-left docutils align-left" id="id1">
 <caption><span class="caption-text">Field Descriptions: Request Payload</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -186,7 +187,7 @@
 </table>
 </section>
 <section id="example-payload-request-received">
-<h3>Example Payload: Request Received<a class="headerlink" href="#example-payload-request-received" title="Permalink to this headline"></a></h3>
+<h3>Example Payload: Request Received<a class="headerlink" href="#example-payload-request-received" title="Permalink to this heading"></a></h3>
 <p>Here is an example payload for an instrumentation request from the bookings service in the <code class="docutils literal notranslate"><span class="pre">cinema-1</span></code> example after being called by the users service: the payload of <code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/filibuster/update</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;instrumentation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;request_received&quot;</span><span class="p">,</span>
@@ -199,7 +200,7 @@
 <p>This payload tells the Filibuster server that the service that received the remote call is the bookings service: this is necessary because with HTTP, requests are made using URLs which do not necessarily indicate the service that is contacted.</p>
 </section>
 <section id="example-payload-invocation-complete">
-<h3>Example Payload: Invocation Complete<a class="headerlink" href="#example-payload-invocation-complete" title="Permalink to this headline"></a></h3>
+<h3>Example Payload: Invocation Complete<a class="headerlink" href="#example-payload-invocation-complete" title="Permalink to this heading"></a></h3>
 <p>Here is an example payload for an instrumentation request from the users service after the call to the bookings service returns.  This notifies the Filibuster service of the response.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;instrumentation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;invocation_complete&quot;</span><span class="p">,</span>
@@ -219,7 +220,7 @@
 <p>This payload specifies that for the request with a certain generated id, execution index, and vector clock, the response was an instance of the <code class="docutils literal notranslate"><span class="pre">Response</span></code> class, where the status code and text attributes were set accordingly.</p>
 </section>
 <section id="example-payload-invocation-completed-with-exception">
-<h3>Example Payload: Invocation Completed with Exception<a class="headerlink" href="#example-payload-invocation-completed-with-exception" title="Permalink to this headline"></a></h3>
+<h3>Example Payload: Invocation Completed with Exception<a class="headerlink" href="#example-payload-invocation-completed-with-exception" title="Permalink to this heading"></a></h3>
 <p>Here is an example payload for an instrumentation request from the users service after the call to the bookings service throws an exception.  This notifies the Filibuster service of that exception: in this case, the exception could have occurred because of a failure in the remote service or because Filibuster injected that failure.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;instrumentation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;invocation_complete&quot;</span><span class="p">,</span>
@@ -240,7 +241,7 @@
 </section>
 </section>
 <section id="response">
-<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline"></a></h2>
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this heading"></a></h2>
 <p>All updates return an empty JSON object.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="p">}</span>

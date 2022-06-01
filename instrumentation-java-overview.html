@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Java Instrumentors &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -102,10 +103,10 @@
            <div itemprop="articleBody">
              
   <section id="java-instrumentors">
-<h1>Java Instrumentors<a class="headerlink" href="#java-instrumentors" title="Permalink to this headline"></a></h1>
+<h1>Java Instrumentors<a class="headerlink" href="#java-instrumentors" title="Permalink to this heading"></a></h1>
 <p>For developers, Filibuster provides a client and server instrumentor library that can be used to ease the task of instrumenting libraries for use with Filibuster.</p>
 <section id="client-instrumentor">
-<h2>Client Instrumentor<a class="headerlink" href="#client-instrumentor" title="Permalink to this headline"></a></h2>
+<h2>Client Instrumentor<a class="headerlink" href="#client-instrumentor" title="Permalink to this heading"></a></h2>
 <p>The Filibuster client instrumentor is used to setup the required metadata and record the request lifecycle of an outgoing request.  The instrumentor automatically maintains metadata, such as the vector clocks and execution indexes associated with this request, and notifies the Filibuster server of the request and it’s outcome.</p>
 <p>The client instrumentor should be instantiated with the service name and a boolean indicating whether or not the Filibuster server should be contacted or not (for testing.)  Once instantiated, the service should invoke the <code class="docutils literal notranslate"><span class="pre">prepareForInvocation</span></code> method, which will setup required metadata: the vector clocks and execution indexes that should be associated with this request.</p>
 <p>Here is an example:</p>
@@ -130,13 +131,13 @@
 </pre></div>
 </div>
 <section id="fault-injection">
-<h3>Fault Injection<a class="headerlink" href="#fault-injection" title="Permalink to this headline"></a></h3>
+<h3>Fault Injection<a class="headerlink" href="#fault-injection" title="Permalink to this heading"></a></h3>
 <p>After the <code class="docutils literal notranslate"><span class="pre">beforeInvocation</span></code> method is invoked, the <code class="docutils literal notranslate"><span class="pre">getFailureMetadata</span></code> and <code class="docutils literal notranslate"><span class="pre">getForcedException</span></code> methods can be used to determine if the client that is being instrumented should throw an exception or alter the response to indicate failure.  Both of these functions return a JSON object whose contents should be interpreted by the client itself.  We refer the reader to the section <a class="reference internal" href="instrumentation-server-create.html#http-api-create"><span class="std std-ref">HTTP API: Create</span></a> for details on what these fields these objects contain and how they should be interpreted.</p>
 <p>It is the clients responsibility to ensure that when injecting faults that one of either the <code class="docutils literal notranslate"><span class="pre">afterInvocationComplete</span></code> or <code class="docutils literal notranslate"><span class="pre">afterInvocationWithException</span></code> methods are invoked to record the final response.</p>
 </section>
 </section>
 <section id="server-instrumentor">
-<h2>Server Instrumentor<a class="headerlink" href="#server-instrumentor" title="Permalink to this headline"></a></h2>
+<h2>Server Instrumentor<a class="headerlink" href="#server-instrumentor" title="Permalink to this heading"></a></h2>
 <p>The Filibuster server instrumentor is used to setup required metadata and notify the Filibuster server of an incoming request.  The instrumentor automatically sends the <code class="docutils literal notranslate"><span class="pre">request_received</span></code> message to the Filibuster server and stores metadata in a global metadata context that is then used by the client instrumentor.</p>
 <p>The server instrumentor should be instantiated with the service name, a boolean indicating whether or not the Filibuster server should be contacted or not (for testing) and the incoming metadata for the request.  The metadata must be provided explicitly to the server instrumentor: this metadata will be stored differently depending on the transport mechanism (<em>e.g.,</em> headers for HTTP requests, metadata for GRPC requests.)</p>
 <p>Here is an example:</p>

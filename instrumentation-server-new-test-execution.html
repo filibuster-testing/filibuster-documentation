@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HTTP API: New Test Execution &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -111,19 +112,19 @@
            <div itemprop="articleBody">
              
   <section id="http-api-new-test-execution">
-<h1>HTTP API: New Test Execution<a class="headerlink" href="#http-api-new-test-execution" title="Permalink to this headline"></a></h1>
+<h1>HTTP API: New Test Execution<a class="headerlink" href="#http-api-new-test-execution" title="Permalink to this heading"></a></h1>
 <p>The New Test Execution API (<code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/filibuster/new-test-execution/&lt;service_name&gt;</span></code>) provided by the Filibuster server can be used by instrumentation to determine if the request that was just received is part of the same test execution that the previous request was in.  This is important because it allows the system to reset system state for a new test without having to restart all of the services (see the bypass restart options in the Make Targets section.)</p>
 <section id="request">
-<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline"></a></h2>
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this heading"></a></h2>
 <p>This request only takes one parameter in the URL: the name of the service that is calling the API.</p>
 </section>
 <section id="response">
-<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline"></a></h2>
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this heading"></a></h2>
 <p>The response contains a single boolean in a JSON body that indicates if this is the first request to this service in a new test execution.</p>
 <section id="field-descriptions">
-<h3>Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permalink to this headline"></a></h3>
+<h3>Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permalink to this heading"></a></h3>
 <p>In the following table, we present descriptions of the fields in the response body.</p>
-<table class="colwidths-auto force-left docutils align-left" id="id1">
+<table class="force-left docutils align-left" id="id1">
 <caption><span class="caption-text">Field Descriptions: Response Body</span><a class="headerlink" href="#id1" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -142,7 +143,7 @@
 </table>
 </section>
 <section id="example-body-request-received">
-<h3>Example Body: Request Received<a class="headerlink" href="#example-body-request-received" title="Permalink to this headline"></a></h3>
+<h3>Example Body: Request Received<a class="headerlink" href="#example-body-request-received" title="Permalink to this heading"></a></h3>
 <p>Included below, is an example response.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;new_test_execution&quot;</span><span class="p">:</span> <span class="kc">false</span>

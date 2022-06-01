@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enabling Fault-Injection in the Client &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -109,10 +110,10 @@
            <div itemprop="articleBody">
              
   <section id="enabling-fault-injection-in-the-client">
-<h1>Enabling Fault-Injection in the Client<a class="headerlink" href="#enabling-fault-injection-in-the-client" title="Permalink to this headline"></a></h1>
+<h1>Enabling Fault-Injection in the Client<a class="headerlink" href="#enabling-fault-injection-in-the-client" title="Permalink to this heading"></a></h1>
 <p>Now, we look at the modifications made to the client to allow for fault injection.</p>
 <section id="parse-invocation-response">
-<h2>Parse Invocation Response<a class="headerlink" href="#parse-invocation-response" title="Permalink to this headline"></a></h2>
+<h2>Parse Invocation Response<a class="headerlink" href="#parse-invocation-response" title="Permalink to this heading"></a></h2>
 <p>We parse the response back from the invocation call to extract the metadata that indicates whether or not we need to
 inject a failure or not.  If so, we record this information for use below.</p>
 <p>In this example, we extract information about the exception class name, any parameters we need to set on that exception
@@ -144,7 +145,7 @@ class (<em>e.g.</em>, code), whether or not we should abort the request or sleep
 </div>
 </section>
 <section id="instantiate-exception">
-<h2>Instantiate Exception<a class="headerlink" href="#instantiate-exception" title="Permalink to this headline"></a></h2>
+<h2>Instantiate Exception<a class="headerlink" href="#instantiate-exception" title="Permalink to this heading"></a></h2>
 <p>We then instantiate the exception class and set the attributes.  Here, we’re only concerned with one exception type,
 <code class="docutils literal notranslate"><span class="pre">grpc._channel._InactiveRpcError</span></code> and it’s associated code attribute, which is the enumeration <code class="docutils literal notranslate"><span class="pre">grpc.StatusCode</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## -------------------------------------------------------------</span>
@@ -164,7 +165,7 @@ class (<em>e.g.</em>, code), whether or not we should abort the request or sleep
 </div>
 </section>
 <section id="raise-and-record">
-<h2>Raise and Record<a class="headerlink" href="#raise-and-record" title="Permalink to this headline"></a></h2>
+<h2>Raise and Record<a class="headerlink" href="#raise-and-record" title="Permalink to this heading"></a></h2>
 <p>Finally, we conditionally throw the error and notify the Filibuster of the exception using the previous exceptional
 response call.  As that code was included in the previous section, we omit it here.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">exception</span> <span class="ow">and</span> <span class="n">exception_code</span><span class="p">:</span>

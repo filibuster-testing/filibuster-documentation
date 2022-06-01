@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Researching Resilience: Lack of Corpus &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -113,10 +114,10 @@
            <div itemprop="articleBody">
              
   <section id="researching-resilience-lack-of-corpus">
-<h1>Researching Resilience: Lack of Corpus<a class="headerlink" href="#researching-resilience-lack-of-corpus" title="Permalink to this headline"></a></h1>
+<h1>Researching Resilience: Lack of Corpus<a class="headerlink" href="#researching-resilience-lack-of-corpus" title="Permalink to this heading"></a></h1>
 <p>We will start with a bit of history.</p>
 <section id="history">
-<h2>History<a class="headerlink" href="#history" title="Permalink to this headline"></a></h2>
+<h2>History<a class="headerlink" href="#history" title="Permalink to this heading"></a></h2>
 <p>In 2018, our group released an open-source alternative distributed runtime for
 Erlang called <a class="reference external" href="https://github.com/lasp-lang/partisan">Partisan</a>, that was
 published at <a class="reference external" href="https://www.usenix.org/conference/atc19/presentation/meiklejohn">USENIX ATC ‘18</a>.  The main
@@ -151,7 +152,7 @@ in Partisan to test commit protocols by injecting omission faults causing the
 protocols to stop making progress, we named it Filibuster.</p>
 </section>
 <section id="partisan-s-filibuster">
-<h2>Partisan’s Filibuster<a class="headerlink" href="#partisan-s-filibuster" title="Permalink to this headline"></a></h2>
+<h2>Partisan’s Filibuster<a class="headerlink" href="#partisan-s-filibuster" title="Permalink to this heading"></a></h2>
 <p>The original version of Filibuster, which was part of Partisan, was used to test
 a number of commit and broadcast protocols that we implemented in Erlang to
 demonstrate that we could identify known bugs or deficiencies: in fact, I wrote
@@ -198,7 +199,7 @@ cases during exhaustive search that needed more precision.</p>
 <p>As we have completely abandoned this line of work, I’ll omit the details.</p>
 </section>
 <section id="filibuster-2-0">
-<h2>Filibuster 2.0<a class="headerlink" href="#filibuster-2-0" title="Permalink to this headline"></a></h2>
+<h2>Filibuster 2.0<a class="headerlink" href="#filibuster-2-0" title="Permalink to this heading"></a></h2>
 <p>Around this time, I made the switch from working on testing protocol development
 — of which there was significant research using stateless model checkers to
 identify faults from message reordering and message omission with systems like
@@ -220,7 +221,7 @@ round of feedback, and again were rejected both times.</p>
 <p>Again, one of the key problems with the research: the weak evaluation.</p>
 </section>
 <section id="filibuster-3-0">
-<h2>Filibuster 3.0<a class="headerlink" href="#filibuster-3-0" title="Permalink to this headline"></a></h2>
+<h2>Filibuster 3.0<a class="headerlink" href="#filibuster-3-0" title="Permalink to this heading"></a></h2>
 <p>In the Fall of 2020, after completing an internship at Amazon in the Automated
 Research Group in software testing, I was back, ready to try again.  With a
 pandemic, stay-at-home order in place, we decided to take a major step back and
@@ -263,7 +264,7 @@ identify search optimizations specific to microservices, in the same way that
 techniques like symmetry reduction had optimized for distributed infrastructure.</p>
 </section>
 <section id="building-a-corpus">
-<h2>Building a Corpus<a class="headerlink" href="#building-a-corpus" title="Permalink to this headline"></a></h2>
+<h2>Building a Corpus<a class="headerlink" href="#building-a-corpus" title="Permalink to this heading"></a></h2>
 <p>Microservice applications just aren’t open source; that’s the core issue.</p>
 <p>In most cases, the microservice code that is being written at companies is core,
 intellectual property and remains private.  When something does get open
@@ -311,7 +312,7 @@ available on YouTube or Vimeo.</p>
 <p>Finally, I collected an interesting list of microservice request patterns that we identified during the survey.</p>
 </section>
 <section id="implementation-and-evaluation">
-<h2>Implementation and Evaluation<a class="headerlink" href="#implementation-and-evaluation" title="Permalink to this headline"></a></h2>
+<h2>Implementation and Evaluation<a class="headerlink" href="#implementation-and-evaluation" title="Permalink to this heading"></a></h2>
 <p>In the Spring of 2021, I had two awesome undergraduate research (Andrea Estrada
 and Yiwen Song) students at Carnegie Mellon University, join my project to help
 out for the semester.  We split efforts up with the goal of having a completed
@@ -333,7 +334,7 @@ the development experience and integrated it with Amazon’s CodeBuild CI/CD
 environment as well.</p>
 </section>
 <section id="wrap-up">
-<h2>Wrap-Up<a class="headerlink" href="#wrap-up" title="Permalink to this headline"></a></h2>
+<h2>Wrap-Up<a class="headerlink" href="#wrap-up" title="Permalink to this heading"></a></h2>
 <p>Our corpus is one of the three main contributions of our ACM SoCC ‘21 paper on
 Service-level Fault Injection Testing.  We believe that the lack of work on
 identifying resilience bugs in microservice architectures in both the Systems

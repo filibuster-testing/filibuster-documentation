@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HTTP API: Create &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -120,15 +121,15 @@
            <div itemprop="articleBody">
              
   <section id="http-api-create">
-<h1>HTTP API: Create<a class="headerlink" href="#http-api-create" title="Permalink to this headline"></a></h1>
+<h1>HTTP API: Create<a class="headerlink" href="#http-api-create" title="Permalink to this heading"></a></h1>
 <p>The CREATE API (<code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/filibuster/create</span></code>) provided by the Filibuster server is responsible for registering remote call with the Filibuster test server in order to drive fault injection for these calls.</p>
 <section id="request">
-<h2>Request<a class="headerlink" href="#request" title="Permalink to this headline"></a></h2>
+<h2>Request<a class="headerlink" href="#request" title="Permalink to this heading"></a></h2>
 <p>We describe the necessary parameters for a request below along with an example taken from the <code class="docutils literal notranslate"><span class="pre">cinema-1</span></code> example.</p>
 <section id="field-descriptions">
-<h3>Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permalink to this headline"></a></h3>
+<h3>Field Descriptions<a class="headerlink" href="#field-descriptions" title="Permalink to this heading"></a></h3>
 <p>In the following table, we present descriptions of the fields in the request payload.</p>
-<table class="colwidths-auto force-left docutils align-left" id="id2">
+<table class="force-left docutils align-left" id="id2">
 <caption><span class="caption-text">Field Descriptions: Request Payload</span><a class="headerlink" href="#id2" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -207,7 +208,7 @@
 </table>
 </section>
 <section id="example-payload">
-<h3>Example Payload<a class="headerlink" href="#example-payload" title="Permalink to this headline"></a></h3>
+<h3>Example Payload<a class="headerlink" href="#example-payload" title="Permalink to this heading"></a></h3>
 <p>Here is the example payload for an instrumentation request from the users service in the <code class="docutils literal notranslate"><span class="pre">cinema-1</span></code> example: the payload of <code class="docutils literal notranslate"><span class="pre">PUT</span> <span class="pre">/filibuster/create</span></code>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;instrumentation_type&quot;</span><span class="p">:</span> <span class="s2">&quot;invocation&quot;</span><span class="p">,</span>
@@ -236,12 +237,12 @@
 </section>
 </section>
 <section id="response">
-<h2>Response<a class="headerlink" href="#response" title="Permalink to this headline"></a></h2>
+<h2>Response<a class="headerlink" href="#response" title="Permalink to this heading"></a></h2>
 <p>We describe the necessary parameters in an response below along with an example taken from the <code class="docutils literal notranslate"><span class="pre">cinema-1</span></code> example.</p>
 <section id="id1">
-<h3>Field Descriptions<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h3>
+<h3>Field Descriptions<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>In the following table, we present descriptions of the fields in the response body.</p>
-<table class="colwidths-auto docutils align-left" id="id3">
+<table class="docutils align-left" id="id3">
 <caption><span class="caption-text">Field Descriptions: Response Body</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -268,7 +269,7 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-auto docutils align-left" id="id4">
+<table class="docutils align-left" id="id4">
 <caption><span class="caption-text">Field Descriptions: Response Body, <code class="docutils literal notranslate"><span class="pre">failure_metadata</span></code></span><a class="headerlink" href="#id4" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -290,7 +291,7 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-auto docutils align-left" id="id5">
+<table class="docutils align-left" id="id5">
 <caption><span class="caption-text">Field Descriptions: Response Body, <code class="docutils literal notranslate"><span class="pre">forced_exception</span></code></span><a class="headerlink" href="#id5" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -312,7 +313,7 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-auto docutils align-left" id="id6">
+<table class="docutils align-left" id="id6">
 <caption><span class="caption-text">Field Descriptions: Response Body, <code class="docutils literal notranslate"><span class="pre">failure_metadata.exception</span></code></span><a class="headerlink" href="#id6" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -334,7 +335,7 @@
 </tr>
 </tbody>
 </table>
-<table class="colwidths-auto docutils align-left" id="id7">
+<table class="docutils align-left" id="id7">
 <caption><span class="caption-text">Field Descriptions: Response Body, <code class="docutils literal notranslate"><span class="pre">forced_exception.metadata</span></code> and <code class="docutils literal notranslate"><span class="pre">failure_metadata.exception.metadata</span></code></span><a class="headerlink" href="#id7" title="Permalink to this table"></a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
@@ -358,7 +359,7 @@
 </table>
 </section>
 <section id="timeouts">
-<h3>Timeouts<a class="headerlink" href="#timeouts" title="Permalink to this headline"></a></h3>
+<h3>Timeouts<a class="headerlink" href="#timeouts" title="Permalink to this heading"></a></h3>
 <p>For timeouts, either a float can be provided (as fractional seconds: 0.001 for a single millisecond) or an expression in terms of the timeout specified at the callsite.  To specify a timeout that is in terms of the callsite, use the following syntax:</p>
 <p>For example, the following takes the call site’s timeout and adds a single milliscond and sleeps that interval, forcing the timeout to fire.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@expr</span><span class="p">(</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;timeout&#39;</span><span class="p">])</span><span class="o">+</span><span class="mf">0.001</span>
@@ -370,11 +371,11 @@
 </div>
 </section>
 <section id="dynamic-reduction-invariant">
-<h3>Dynamic Reduction Invariant<a class="headerlink" href="#dynamic-reduction-invariant" title="Permalink to this headline"></a></h3>
+<h3>Dynamic Reduction Invariant<a class="headerlink" href="#dynamic-reduction-invariant" title="Permalink to this heading"></a></h3>
 <p>For dynamic reduction to work, the metadata object that is returned by the instrumentation must always contain the fields that were supplied; therefore, ensuring the invariant holds that any fault injected produces a metadata object that is strictly greater.  This ensures a strict partial order over objects, where they can be compared to ensure requests are equivalent.  Following from this, the metadata object can contain any fields that are instrumentation specific, as long as they are returned along with the response.</p>
 </section>
 <section id="example-body-no-fault-injection">
-<h3>Example Body: No Fault Injection<a class="headerlink" href="#example-body-no-fault-injection" title="Permalink to this headline"></a></h3>
+<h3>Example Body: No Fault Injection<a class="headerlink" href="#example-body-no-fault-injection" title="Permalink to this heading"></a></h3>
 <p>The minimal response from the create call to the Filibuster server will contain a single field in a JSON object containing an identifier that uniquely identifies this request in the test exceution.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;generated_id&quot;</span><span class="p">:</span> <span class="mi">1</span>
@@ -383,7 +384,7 @@
 </div>
 </section>
 <section id="example-body-fault-injection-value">
-<h3>Example Body: Fault Injection (Value)<a class="headerlink" href="#example-body-fault-injection-value" title="Permalink to this headline"></a></h3>
+<h3>Example Body: Fault Injection (Value)<a class="headerlink" href="#example-body-fault-injection-value" title="Permalink to this heading"></a></h3>
 <p>This response from the create call informs the instrumentation that the response should be modified to change the <code class="docutils literal notranslate"><span class="pre">status_code</span></code> field on the <code class="docutils literal notranslate"><span class="pre">Response</span></code> object to a 500 Internal Server Error response.</p>
 <p>The instrumentation is responsible for iterating this <code class="docutils literal notranslate"><span class="pre">return_value</span></code> dictionary and set the values on the response object.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -398,7 +399,7 @@
 </div>
 </section>
 <section id="example-body-fault-injection-exception">
-<h3>Example Body: Fault Injection (Exception)<a class="headerlink" href="#example-body-fault-injection-exception" title="Permalink to this headline"></a></h3>
+<h3>Example Body: Fault Injection (Exception)<a class="headerlink" href="#example-body-fault-injection-exception" title="Permalink to this heading"></a></h3>
 <p>This response from the create call informs the instrumentation that instead of returning a response to the user that an exception should be thrown at the callsite; in this specific case, the <code class="docutils literal notranslate"><span class="pre">requests.exceptions.ConnectionError</span></code> exception will be instantiated and thrown.</p>
 <p>The instrumentation is responsible in throwing this exception.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>

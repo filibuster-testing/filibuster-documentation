@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instrumenting Remote Service Calls &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -115,7 +116,7 @@
            <div itemprop="articleBody">
              
   <section id="instrumenting-remote-service-calls">
-<h1>Instrumenting Remote Service Calls<a class="headerlink" href="#instrumenting-remote-service-calls" title="Permalink to this headline"></a></h1>
+<h1>Instrumenting Remote Service Calls<a class="headerlink" href="#instrumenting-remote-service-calls" title="Permalink to this heading"></a></h1>
 <p>To start, we need to keep track of the remote calls issued by each service and their responses.  To enable dynamic reduction, we need to also associate vector clocks and execution indexes with each request that’s issued.</p>
 <p>To achieve this, we extend the <cite>opentelemetry</cite> instrumentation for <cite>grpc</cite> with the modifications listed below.</p>
 <div class="admonition note">
@@ -123,7 +124,7 @@
 <p>These modifications currently only cover the unary invoker on the insecure channel (without the use of futures.)  Those modifications are straightforward, but are omitted here for this prototype implementation.</p>
 </div>
 <section id="identifying-the-call-site">
-<h2>Identifying the Call Site<a class="headerlink" href="#identifying-the-call-site" title="Permalink to this headline"></a></h2>
+<h2>Identifying the Call Site<a class="headerlink" href="#identifying-the-call-site" title="Permalink to this heading"></a></h2>
 <p>First, we need to identify the call site uniquely.  We do this by including any lines of code in our instrumentation and
 compute a hash based on this traceback.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
@@ -156,7 +157,7 @@ compute a hash based on this traceback.</p>
 </div>
 </section>
 <section id="potentially-reset-state">
-<h2>Potentially Reset State<a class="headerlink" href="#potentially-reset-state" title="Permalink to this headline"></a></h2>
+<h2>Potentially Reset State<a class="headerlink" href="#potentially-reset-state" title="Permalink to this heading"></a></h2>
 <p>If this is the first request in a new test execution, we reset the execution index and vector clock state.  Once we have
 done that, we initialize a new vector clock and a new execution index and associate it with the request id for this request.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
@@ -191,7 +192,7 @@ done that, we initialize a new vector clock and a new execution index and associ
 </div>
 </section>
 <section id="update-the-vector-clock">
-<h2>Update the Vector Clock<a class="headerlink" href="#update-the-vector-clock" title="Permalink to this headline"></a></h2>
+<h2>Update the Vector Clock<a class="headerlink" href="#update-the-vector-clock" title="Permalink to this heading"></a></h2>
 <p>We take the incoming vector clock from the thread context and merge it with the current vector clock associated with this
 request id.  Then, we advance the clock to account for the current request being issued by the node.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
@@ -228,7 +229,7 @@ request id.  Then, we advance the clock to account for the current request being
 </div>
 </section>
 <section id="update-the-execution-index">
-<h2>Update the Execution Index<a class="headerlink" href="#update-the-execution-index" title="Permalink to this headline"></a></h2>
+<h2>Update the Execution Index<a class="headerlink" href="#update-the-execution-index" title="Permalink to this heading"></a></h2>
 <p>Next, we update the execution index associated with the request by pushing on the unique hash of the callsite.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
 <span class="c1">## START EXECUTION INDEX WORK</span>
@@ -261,7 +262,7 @@ request id.  Then, we advance the clock to account for the current request being
 </div>
 </section>
 <section id="keep-track-of-the-origin-vclock">
-<h2>Keep Track of the Origin VClock<a class="headerlink" href="#keep-track-of-the-origin-vclock" title="Permalink to this headline"></a></h2>
+<h2>Keep Track of the Origin VClock<a class="headerlink" href="#keep-track-of-the-origin-vclock" title="Permalink to this heading"></a></h2>
 <p>Finally, we extract the origin vclock that came in as part of the request from the thread context.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
 <span class="c1">## START ORIGIN CLOCK WORK</span>
@@ -285,7 +286,7 @@ request id.  Then, we advance the clock to account for the current request being
 </div>
 </section>
 <section id="record-the-invocation">
-<h2>Record the Invocation<a class="headerlink" href="#record-the-invocation" title="Permalink to this headline"></a></h2>
+<h2>Record the Invocation<a class="headerlink" href="#record-the-invocation" title="Permalink to this heading"></a></h2>
 <p>Before we issue the request, we make a request to the Filibuster test server registering the invocation.  We include
 the module, method, arguments, callsite information along with the execution index, vector clock, and origin vector
 clock.  We parse the response and extract out the generated id from the Filibuster server; this allows us to
@@ -353,7 +354,7 @@ update the information about this request when the call completes.</p>
 </div>
 </section>
 <section id="add-metadata-to-request">
-<h2>Add Metadata to Request<a class="headerlink" href="#add-metadata-to-request" title="Permalink to this headline"></a></h2>
+<h2>Add Metadata to Request<a class="headerlink" href="#add-metadata-to-request" title="Permalink to this heading"></a></h2>
 <p>Before we issue the request, we need to tag it with metadata that will be forwarded to the service that receives the request.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
 <span class="c1">## START METADATA WORK</span>
@@ -378,7 +379,7 @@ update the information about this request when the call completes.</p>
 </div>
 </section>
 <section id="invocation-completed-success">
-<h2>Invocation Completed: Success<a class="headerlink" href="#invocation-completed-success" title="Permalink to this headline"></a></h2>
+<h2>Invocation Completed: Success<a class="headerlink" href="#invocation-completed-success" title="Permalink to this heading"></a></h2>
 <p>If the request completes successfully – and we didn’t inject a fault, which we will discuss in the following section –
 then, we need to notify the Filibuster server so.  Here, we don’t include the body of the response when the call is
 successfully made, as Filibuster does not require that information for fault injection.</p>
@@ -422,7 +423,7 @@ successfully made, as Filibuster does not require that information for fault inj
 </div>
 </section>
 <section id="invocation-completed-exception">
-<h2>Invocation Completed: Exception<a class="headerlink" href="#invocation-completed-exception" title="Permalink to this headline"></a></h2>
+<h2>Invocation Completed: Exception<a class="headerlink" href="#invocation-completed-exception" title="Permalink to this heading"></a></h2>
 <p>If the request completes with an exception, we notify the Filibuster server of the exceptional response and include the GRPC status code as metadata to the exception.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
 <span class="c1">## START RECORD EXCEPTIONAL RESPONSE</span>

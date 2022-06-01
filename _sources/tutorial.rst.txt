@@ -330,11 +330,14 @@ Finding the Bug
 Let's use Filibuster to identify bugs using fault injection.  First, we can use Filibuster to identify bugs using a
 default set of faults for the application.  We can do that using the Filibuster CLI tool.
 
-First, install Filibuster.
+Since Filibuster is currently under active development, there isn't a pip package available yet.
+First, install the Filibuster python implementation from source:
 
 .. code-block:: shell
 
-    pip install filibuster
+    git clone http://github.com/filibuster-testing/filibuster
+    cd filibuster
+    make install
 
 Next, provide the Filibuster CLI tool with the path to the functional test.  If we don't specify what faults to inject,
 Filibuster will use test default set of common faults.

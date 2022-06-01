@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instrumenting Services To Receive Calls &mdash; filibuster  documentation</title>
@@ -16,6 +16,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -108,10 +109,10 @@
            <div itemprop="articleBody">
              
   <section id="instrumenting-services-to-receive-calls">
-<h1>Instrumenting Services To Receive Calls<a class="headerlink" href="#instrumenting-services-to-receive-calls" title="Permalink to this headline"></a></h1>
+<h1>Instrumenting Services To Receive Calls<a class="headerlink" href="#instrumenting-services-to-receive-calls" title="Permalink to this heading"></a></h1>
 <p>Next, we need to capture the incoming metadata and propagate it to any further service calls.  We need to notify the Filibuster server of the service that was reached to resolve dynamic binding.</p>
 <section id="metadata-propagation">
-<h2>Metadata Propagation<a class="headerlink" href="#metadata-propagation" title="Permalink to this headline"></a></h2>
+<h2>Metadata Propagation<a class="headerlink" href="#metadata-propagation" title="Permalink to this heading"></a></h2>
 <p>We extract the metadata from the request metadata, assign a request id if the current request does not have one, and then assign it to the thread context.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
 <span class="c1">## START PARSE METADATA AND CONTEXT PROPAGATION</span>
@@ -161,7 +162,7 @@
 </div>
 </section>
 <section id="instrumentation-call">
-<h2>Instrumentation Call<a class="headerlink" href="#instrumentation-call" title="Permalink to this headline"></a></h2>
+<h2>Instrumentation Call<a class="headerlink" href="#instrumentation-call" title="Permalink to this heading"></a></h2>
 <p>Finally, we issue a call to the Filibuster server to notify it of which server the request arrived at.  We only do this if the request has a generated id, which means it is an instrumented Filibuster request.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## *******************************************************************************************</span>
 <span class="c1">## START INSTRUMENTATION CALL</span>

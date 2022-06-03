@@ -90,7 +90,9 @@ of your services.
 
 Then create the files you will be working with for this tutorial. These files will specify the three different Flask apps needed
 to respond "foo bar baz" to a client. These files include ``python`` files as well as the infrastructure needed to run the apps 
-using Filibuster. Run the following:
+using Filibuster. 
+
+Place the following in a shell script and execute it:
 
 .. code-block:: shell
 

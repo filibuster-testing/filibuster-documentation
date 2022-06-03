@@ -202,7 +202,8 @@ of your services.</p>
 </div>
 <p>Then create the files you will be working with for this tutorial. These files will specify the three different Flask apps needed
 to respond “foo bar baz” to a client. These files include <code class="docutils literal notranslate"><span class="pre">python</span></code> files as well as the infrastructure needed to run the apps
-using Filibuster. Run the following:</p>
+using Filibuster.</p>
+<p>Place the following in a shell script and execute it:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop through the three services that we want to create (and their associated ports) and create initial file structure.</span>
 <span class="c1"># Note the services and corresponding ports correspond to filibuster-tutorial/networking.json</span>
 <span class="k">for</span> i in <span class="s2">&quot;foo 5000&quot;</span> <span class="s2">&quot;bar 5001&quot;</span> <span class="s2">&quot;baz 5002&quot;</span>

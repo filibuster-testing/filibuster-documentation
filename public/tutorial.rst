@@ -35,6 +35,27 @@ Create the basic structure for your apps:
     touch filibuster-tutorial/networking.json                # This is where you will write networking information for your apps.
     touch filibuster-tutorial/Makefile                       # This is where you will write the Makefile for your apps.
 
+``filibuster-tutorial/base_requirements.txt``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Create ``filibuster-tutorial/base_requirements.txt`` and place the necessary requirements in the file.
+
+.. code-block:: python
+
+    Flask==1.0.0
+    pytest
+    requests
+    opentelemetry-sdk==1.0.0rc1
+    opentelemetry-api==1.0.0rc1
+    opentelemetry-instrumentation==0.18b0
+    opentelemetry-exporter-jaeger==1.0.0rc1
+    opentelemetry-instrumentation-flask==0.18b1
+    opentelemetry-instrumentation-requests==0.18b1
+    docker
+    kubernetes
+    filibuster-python
+
+
 ``filibuster-tutorial/networking.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

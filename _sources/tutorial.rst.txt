@@ -24,6 +24,7 @@ First, install the Filibuster python implementation from source:
 
 
 Next, to run the examples, you'll need to install ``tmux``.
+You can find instructions, depending on operating system, `here <https://github.com/tmux/tmux/wiki/Installing>`.
 
 Creating your Flask Apps
 ------------------------

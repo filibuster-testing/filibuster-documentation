@@ -142,6 +142,10 @@
 First, install the Filibuster python implementation from source:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/filibuster-testing/filibuster
 <span class="nb">cd</span> filibuster
+<span class="c1">#Create a new virtual environment with the correct Python version</span>
+virtualenv -p /usr/bin/python&lt;version&gt; &lt;my_env_name&gt;
+<span class="nb">source</span> &lt;my_env_name&gt;/bin/activate
+pip3 install -r requirements.txt
 make install
 </pre></div>
 </div>
@@ -264,7 +268,7 @@ using Filibuster.</p>
 </section>
 <section id="creating-the-baz-app">
 <h3>Creating the <code class="docutils literal notranslate"><span class="pre">baz</span></code> App<a class="headerlink" href="#creating-the-baz-app" title="Permalink to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/service/baz/baz/app.py</span></code>, add the following code to implement the service.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/services/baz/baz/app.py</span></code>, add the following code to implement the service.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
 <span class="kn">from</span> <span class="nn">werkzeug.exceptions</span> <span class="kn">import</span> <span class="n">ServiceUnavailable</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -315,7 +319,7 @@ different fault combinations.</p>
 </section>
 <section id="creating-the-bar-app">
 <h3>Creating the <code class="docutils literal notranslate"><span class="pre">bar</span></code> App<a class="headerlink" href="#creating-the-bar-app" title="Permalink to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/service/bar/bar/app.py</span></code>, add the following code.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/services/bar/bar/app.py</span></code>, add the following code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
 <span class="kn">from</span> <span class="nn">werkzeug.exceptions</span> <span class="kn">import</span> <span class="n">ServiceUnavailable</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -366,7 +370,7 @@ different fault combinations.</p>
 </section>
 <section id="creating-the-foo-app">
 <h3>Creating the <code class="docutils literal notranslate"><span class="pre">foo</span></code> App<a class="headerlink" href="#creating-the-foo-app" title="Permalink to this heading"></a></h3>
-<p>In <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/service/foo/foo/app.py</span></code>, add the following code.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/services/foo/foo/app.py</span></code>, add the following code.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">jsonify</span>
 <span class="kn">from</span> <span class="nn">werkzeug.exceptions</span> <span class="kn">import</span> <span class="n">ServiceUnavailable</span>
 <span class="kn">import</span> <span class="nn">requests</span>
@@ -446,7 +450,7 @@ make local-start
 </pre></div>
 </div>
 <p>Now, run the functional test.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>chmod <span class="m">755</span> functionaal/test_foo_bar_baz.py
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>chmod <span class="m">755</span> functional/test_foo_bar_baz.py
 ./functional/test_foo_bar_baz.py
 </pre></div>
 </div>

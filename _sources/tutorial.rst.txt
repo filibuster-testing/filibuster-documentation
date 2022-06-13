@@ -20,6 +20,10 @@ First, install the Filibuster python implementation from source:
 
     git clone http://github.com/filibuster-testing/filibuster
     cd filibuster
+    #Create a new virtual environment with the correct Python version
+    virtualenv -p /usr/bin/python<version> <my_env_name>
+    source <my_env_name>/bin/activate
+    pip3 install -r requirements.txt
     make install
 
 Next, to run the examples, you'll need to install ``tmux``.
@@ -157,7 +161,7 @@ Place the following in a shell script and execute it from the ``filibuster-corpu
 Creating the ``baz`` App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In ``filibuster-tutorial/service/baz/baz/app.py``, add the following code to implement the service.
+In ``filibuster-tutorial/services/baz/baz/app.py``, add the following code to implement the service.
 
 .. code-block:: python
 
@@ -214,7 +218,7 @@ different fault combinations.
 Creating the ``bar`` App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In ``filibuster-tutorial/service/bar/bar/app.py``, add the following code.
+In ``filibuster-tutorial/services/bar/bar/app.py``, add the following code.
 
 .. code-block:: python
 
@@ -268,7 +272,7 @@ In ``filibuster-tutorial/service/bar/bar/app.py``, add the following code.
 Creating the ``foo`` App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In ``filibuster-tutorial/service/foo/foo/app.py``, add the following code.
+In ``filibuster-tutorial/services/foo/foo/app.py``, add the following code.
 
 .. code-block:: python
 
@@ -357,7 +361,7 @@ Now, run the functional test.
 
 .. code-block:: shell
 
-    chmod 755 functionaal/test_foo_bar_baz.py
+    chmod 755 functional/test_foo_bar_baz.py
     ./functional/test_foo_bar_baz.py
 
 At this point, your test should pass.  If it doesn't, please make sure your services were implemented correctly as

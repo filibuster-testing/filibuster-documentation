@@ -51,6 +51,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#creating-your-flask-apps">Creating your Flask Apps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#flask-app-setup">Flask App Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#filibuster-tutorial-base-requirements-txt"><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/base_requirements.txt</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#filibuster-tutorial-networking-json"><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/networking.json</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#filibuster-tutorial-makefile"><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/Makefile</span></code></a></li>
 </ul>
@@ -153,6 +154,24 @@ touch filibuster-tutorial/networking.json                <span class="c1"># This
 touch filibuster-tutorial/Makefile                       <span class="c1"># This is where you will write the Makefile for your apps.</span>
 </pre></div>
 </div>
+<section id="filibuster-tutorial-base-requirements-txt">
+<h4><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/base_requirements.txt</span></code><a class="headerlink" href="#filibuster-tutorial-base-requirements-txt" title="Permalink to this heading"></a></h4>
+<p>Create <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/base_requirements.txt</span></code> and place the necessary requirements in the file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Flask</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">pytest</span>
+<span class="n">requests</span>
+<span class="n">opentelemetry</span><span class="o">-</span><span class="n">sdk</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="n">rc1</span>
+<span class="n">opentelemetry</span><span class="o">-</span><span class="n">api</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="n">rc1</span>
+<span class="n">opentelemetry</span><span class="o">-</span><span class="n">instrumentation</span><span class="o">==</span><span class="mf">0.18</span><span class="n">b0</span>
+<span class="n">opentelemetry</span><span class="o">-</span><span class="n">exporter</span><span class="o">-</span><span class="n">jaeger</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="n">rc1</span>
+<span class="n">opentelemetry</span><span class="o">-</span><span class="n">instrumentation</span><span class="o">-</span><span class="n">flask</span><span class="o">==</span><span class="mf">0.18</span><span class="n">b1</span>
+<span class="n">opentelemetry</span><span class="o">-</span><span class="n">instrumentation</span><span class="o">-</span><span class="n">requests</span><span class="o">==</span><span class="mf">0.18</span><span class="n">b1</span>
+<span class="n">docker</span>
+<span class="n">kubernetes</span>
+<span class="n">filibuster</span><span class="o">-</span><span class="n">python</span>
+</pre></div>
+</div>
+</section>
 <section id="filibuster-tutorial-networking-json">
 <h4><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/networking.json</span></code><a class="headerlink" href="#filibuster-tutorial-networking-json" title="Permalink to this heading"></a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/networking.json</span></code> specifies networking information including ports, hosts, and timeout

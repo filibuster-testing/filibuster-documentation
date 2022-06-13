@@ -64,15 +64,20 @@ Create ``filibuster-tutorial/base_requirements.txt`` and place the necessary req
     Flask==1.0.0
     pytest
     requests
-    opentelemetry-sdk==1.0.0rc1
+    Jinja2==3.0.1
+    coverage
+    itsdangerous==2.0.1
     opentelemetry-api==1.0.0rc1
-    opentelemetry-instrumentation==0.18b0
     opentelemetry-exporter-jaeger==1.0.0rc1
+    opentelemetry-instrumentation==0.18b0
     opentelemetry-instrumentation-flask==0.18b1
+    opentelemetry-instrumentation-grpc==0.18b1
     opentelemetry-instrumentation-requests==0.18b1
+    opentelemetry-instrumentation-wsgi==0.18b1
+    opentelemetry-sdk==1.0.0rc1
+    opentelemetry-util-http==0.18b1
     docker
     kubernetes
-    filibuster
 
 ``filibuster-tutorial/networking.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

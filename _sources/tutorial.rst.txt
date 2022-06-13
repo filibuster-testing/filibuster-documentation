@@ -53,7 +53,7 @@ Create ``filibuster-tutorial/base_requirements.txt`` and place the necessary req
     opentelemetry-instrumentation-requests==0.18b1
     docker
     kubernetes
-    filibuster-python
+    filibuster
 
 
 ``filibuster-tutorial/networking.json``

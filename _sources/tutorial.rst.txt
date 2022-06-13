@@ -20,10 +20,12 @@ First, install the Filibuster python implementation from source:
 
     git clone http://github.com/filibuster-testing/filibuster
     cd filibuster
-    #Create a new virtual environment with the correct Python version
+    # Create a new virtual environment with the correct Python version.
     virtualenv -p /usr/bin/python<version> <my_env_name>
     source <my_env_name>/bin/activate
+    # Install requirements.
     pip3 install -r requirements.txt
+    # Install Filibuster.
     make install
 
 Next, to run the examples, you'll need to install ``tmux``.
@@ -62,6 +64,7 @@ Create ``filibuster-tutorial/base_requirements.txt`` and place the necessary req
 .. code-block:: python
 
     Flask==1.0.0
+    coverage
     pytest
     requests
     opentelemetry-sdk==1.0.0rc1

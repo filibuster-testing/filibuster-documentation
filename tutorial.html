@@ -142,10 +142,12 @@
 First, install the Filibuster python implementation from source:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/filibuster-testing/filibuster
 <span class="nb">cd</span> filibuster
-<span class="c1">#Create a new virtual environment with the correct Python version</span>
+<span class="c1"># Create a new virtual environment with the correct Python version.</span>
 virtualenv -p /usr/bin/python&lt;version&gt; &lt;my_env_name&gt;
 <span class="nb">source</span> &lt;my_env_name&gt;/bin/activate
+<span class="c1"># Install requirements.</span>
 pip3 install -r requirements.txt
+<span class="c1"># Install Filibuster.</span>
 make install
 </pre></div>
 </div>
@@ -175,6 +177,7 @@ touch filibuster-tutorial/Makefile                       <span class="c1"># This
 <h4><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/base_requirements.txt</span></code><a class="headerlink" href="#filibuster-tutorial-base-requirements-txt" title="Permalink to this heading"></a></h4>
 <p>Create <code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/base_requirements.txt</span></code> and place the necessary requirements in the file.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Flask</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span>
+<span class="n">coverage</span>
 <span class="n">pytest</span>
 <span class="n">requests</span>
 <span class="n">opentelemetry</span><span class="o">-</span><span class="n">sdk</span><span class="o">==</span><span class="mf">1.0</span><span class="o">.</span><span class="mi">0</span><span class="n">rc1</span>

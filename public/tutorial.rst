@@ -81,6 +81,8 @@ Create ``filibuster-tutorial/base_requirements.txt`` and place the necessary req
     docker
     kubernetes
 
+Install the dependencies with pip: ``pip install -r filibuster-tutorial/base_requirements.txt``.
+
 ``filibuster-tutorial/networking.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

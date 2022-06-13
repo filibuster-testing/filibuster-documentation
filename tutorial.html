@@ -49,6 +49,7 @@
 <p class="caption" role="heading"><span class="caption-text">Using Filibuster</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-your-flask-apps">Creating your Flask Apps</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#flask-app-setup">Flask App Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#filibuster-tutorial-base-requirements-txt"><code class="docutils literal notranslate"><span class="pre">filibuster-tutorial/base_requirements.txt</span></code></a></li>
@@ -135,6 +136,17 @@
 <li><p>Use Filibuster to find the bug.</p></li>
 <li><p>Fix the bug and verify resilience with Filibuster in your local, development environment.</p></li>
 </ol>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+<p>Since Filibuster is currently under active development, there isn’t a pip package available yet.
+First, install the Filibuster python implementation from source:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/filibuster-testing/filibuster
+<span class="nb">cd</span> filibuster
+make install
+</pre></div>
+</div>
+<p>Next, to run the examples, you’ll need to install <code class="docutils literal notranslate"><span class="pre">tmux</span></code>.</p>
+</section>
 <section id="creating-your-flask-apps">
 <h2>Creating your Flask Apps<a class="headerlink" href="#creating-your-flask-apps" title="Permalink to this heading"></a></h2>
 <p>For this tutorial, we will build our example application in the style of an application in our corpus.  Therefore,
@@ -169,13 +181,6 @@ touch filibuster-tutorial/Makefile                       <span class="c1"># This
 <span class="n">docker</span>
 <span class="n">kubernetes</span>
 <span class="n">filibuster</span>
-</pre></div>
-</div>
-<p>Since Filibuster is currently under active development, there isn’t a pip package available yet.
-First, install the Filibuster python implementation from source:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git clone http://github.com/filibuster-testing/filibuster
-<span class="nb">cd</span> filibuster
-make install
 </pre></div>
 </div>
 </section>
@@ -229,8 +234,10 @@ of your services.</p>
 <p>Then create the files you will be working with for this tutorial. These files will specify the three different Flask apps needed
 to respond “foo bar baz” to a client. These files include <code class="docutils literal notranslate"><span class="pre">python</span></code> files as well as the infrastructure needed to run the apps
 using Filibuster.</p>
-<p>Place the following in a shell script and execute it:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Loop through the three services that we want to create (and their associated ports) and create initial file structure.</span>
+<p>Place the following in a shell script and execute it from the <code class="docutils literal notranslate"><span class="pre">filibuster-corpus</span></code> directory:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="c1"># Loop through the three services that we want to create (and their associated ports) and create initial file structure.</span>
 <span class="c1"># Note the services and corresponding ports correspond to filibuster-tutorial/networking.json</span>
 <span class="k">for</span> i in <span class="s2">&quot;foo 5000&quot;</span> <span class="s2">&quot;bar 5001&quot;</span> <span class="s2">&quot;baz 5002&quot;</span>
 <span class="k">do</span>

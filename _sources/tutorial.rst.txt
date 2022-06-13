@@ -10,6 +10,21 @@ In this tutorial, you will:
 3. Use Filibuster to find the bug.
 4. Fix the bug and verify resilience with Filibuster in your local, development environment.
 
+Prerequisites 
+-------------
+
+Since Filibuster is currently under active development, there isn't a pip package available yet.
+First, install the Filibuster python implementation from source:
+
+.. code-block:: shell
+
+    git clone http://github.com/filibuster-testing/filibuster
+    cd filibuster
+    make install
+
+
+Next, to run the examples, you'll need to install ``tmux``.
+
 Creating your Flask Apps
 ------------------------
 
@@ -54,15 +69,6 @@ Create ``filibuster-tutorial/base_requirements.txt`` and place the necessary req
     docker
     kubernetes
     filibuster
-
-Since Filibuster is currently under active development, there isn't a pip package available yet.
-First, install the Filibuster python implementation from source:
-
-.. code-block:: shell
-
-    git clone http://github.com/filibuster-testing/filibuster
-    cd filibuster
-    make install
 
 ``filibuster-tutorial/networking.json``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -121,9 +127,11 @@ Then create the files you will be working with for this tutorial. These files wi
 to respond "foo bar baz" to a client. These files include ``python`` files as well as the infrastructure needed to run the apps 
 using Filibuster. 
 
-Place the following in a shell script and execute it:
+Place the following in a shell script and execute it from the ``filibuster-corpus`` directory:
 
 .. code-block:: shell
+
+    #!/usr/bin/env bash
 
     # Loop through the three services that we want to create (and their associated ports) and create initial file structure.
     # Note the services and corresponding ports correspond to filibuster-tutorial/networking.json
